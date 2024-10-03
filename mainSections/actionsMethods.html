@@ -1,0 +1,224 @@
+<head>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../styles/style.css">
+    <title>DAVA Stuff</title>
+    <meta content="Коллекция различных понятых мною фигнюшек движка DAVA" property="og:title" />
+    <meta content="На этой странице - методы в `.actions` и `.animation` файлах." property="og:description" />
+    <meta content="https://endg4mezer0.github.io" property="og:url" />
+    <meta content="https://media.discordapp.net/attachments/1183792291035480196/1204692736804913183/ezgif-4-93565fb7fc.gif" property="og:image" />
+    <meta content="#45f7a7" data-react-helmet="true" name="theme-color" />
+</head>
+<body>
+    <h1>Методы в *.actions и *.animation</h1>
+    <a href="../index.html">Вернуться назад</a>
+    <h2>Глоссарик</h2>
+    <i>(н.и.н.)</i> - настоящее имя неизвестно
+    <h2>Содержание</h2>
+    <a href="./actionsMethods.html#animMethods">Анимационные методы</a><br>
+    <div class="animMethods">
+        <h3>Анимационные методы</h3>
+        <table cellpadding="8px" border="2px">
+            <tr>
+                <td><b>Название</b></td>
+                <td><b>Пояснение</b></td>
+                <td><b>Пример</b></td>
+            </tr>
+            <tr>
+                <td>
+                    <code>Opacity(path, opacity, [time], [interpolation])</code>
+                </td>
+                <td>
+                    Меняет прозрачность объектов.<br>
+                    Переменные:
+                    <ul>
+                        <li><code>path</code> - <b><code>string</code></b> - строка, определяющая путь до объекта.</li>
+                        <li><code>opacity</code> - <b><code>float</code></b> - значение от <code>0.0</code> до <code>1.0</code>, выражающее степень прозрачности,<br>где <code>0.0</code> - полностью прозрачно, <code>1.0</code> - полностью непрозрачно</li>
+                        <li><code>time</code> - <b><code>float</code></b>, необязательный - кол-во секунд, затрачиваемое на изменение.<br>По умолчанию равно <code>0</code>.</li>
+                        <li><code>interpolation</code> - <b>свой тип</b>, необязательный - тип используемой интерполяции, определяющей плавность ускорения и остановки.<br>По умолчанию равно <code>LINEAR</code>.</li>
+                    </ul>
+                </td>
+                <td>
+                    <code>Opacity(path="./TanksFound", opacity=0.0, time=0.5, interpolation=EASE_OUT)</code>
+                    <br><br>
+                    Укороченная запись:
+                    <br>
+                    <code>Opacity("./TanksFound", 0.0, 0.5, EASE_OUT)</code>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <code>Rotate(path, angle, [time], [interpolation])</code>
+                </td>
+                <td>
+                    Меняет поворот объектов.<br>
+                    Переменные:
+                    <ul>
+                        <li><code>path</code> - <b><code>string</code></b> - строка, определяющая путь до объекта.</li>
+                        <li><code>angle</code> - <b><code>float</code></b> - кол-во градусов, на которое должен повернуться объект.<br>Значение не суммируется, т.е. при повторном вызове метода Rotate с новым значением градусов объект лишь примет это новое значение вместо старого.</li>
+                        <li><code>time</code> - <b><code>float</code></b>, необязательный - кол-во секунд, затрачиваемое на изменение.<br>По умолчанию равно <code>0</code>.</li>
+                        <li><code>interpolation</code> - <b>свой тип</b>, необязательный - тип используемой интерполяции, определяющей плавность ускорения и остановки.<br>По умолчанию равно <code>LINEAR</code>.</li>
+                    </ul>
+                </td>
+                <td>
+                    <code>Rotate("./TanksFound", 0.0, 0.5, SINE_IN)</code>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <code>Scale(path, x, y, [time], [interpolation])</code>
+                </td>
+                <td>
+                    Меняет размер объектов в процентном соотношении.<br>
+                    Переменные:
+                    <ul>
+                        <li><code>path</code> - <b><code>string</code></b> - строка, определяющая путь до объекта.</li>
+                        <li><code>x</code> - <b><code>float</code></b> - неотрицательное (?) значение, выражающее процент от ширины элемента.</li>
+                        <li><code>y</code> - <b><code>float</code></b> - неотрицательное (?) значение, выражающее процент от высоты элемента.</li>
+                        <li><code>time</code> - <b><code>float</code></b>, необязательный - кол-во секунд, затрачиваемое на изменение.<br>По умолчанию равно <code>0</code>.</li>
+                        <li><code>interpolation</code> - <b>свой тип</b>, необязательный - тип используемой интерполяции, определяющей плавность ускорения и остановки.<br>По умолчанию равно <code>LINEAR</code>.</li>
+                    </ul>
+                </td>
+                <td>
+                    <code>Scale("./TanksFound", 1.5, 1.2, 0.5, EASE_IN)</code>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <code>Size(path, [width], height, [time], [interpolation])</code>
+                </td>
+                <td>
+                    Меняет размер объектов по пикселям.<br>
+                    Переменные:
+                    <ul>
+                        <li><code>path</code> - <b><code>string</code></b> - строка, определяющая путь до объекта.</li>
+                        <li><code>width</code> - <b><code>float</code></b>, необязательный - неотрицательное значение, выражающее ширину элемента.</li>
+                        <li><code>height</code> - <b><code>float</code></b> - неотрицательное значение, выражающее высоту элемента.</li>
+                        <li><code>time</code> - <b><code>float</code></b>, необязательный - кол-во секунд, затрачиваемое на изменение.<br>По умолчанию равно <code>0</code>.</li>
+                        <li><code>interpolation</code> - <b>свой тип</b>, необязательный - тип используемой интерполяции, определяющей плавность ускорения и остановки.<br>По умолчанию равно <code>LINEAR</code>.</li>
+                    </ul>
+                </td>
+                <td>
+                    <code>Size("./TanksFound", 204.5, 104.0, 0.5, EASE_IN)</code>
+                    <br><br>
+                    Если не указывать <code>width</code>, то обязательно написать <code>height</code>:
+                    <br>
+                    <code>Size("./TanksFound", height=104.0, 0.5, EASE_IN)</code>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <code>Move(path, [x], y, [time], [interpolation])</code>
+                </td>
+                <td>
+                    Меняет позицию объекта, используя абсолютные значения.<br>
+                    Переменные:
+                    <ul>
+                        <li><code>path</code> - <b><code>string</code></b> - строка, определяющая путь до объекта.</li>
+                        <li><code>x</code> - <b><code>float</code></b>, необязательный - значение, определяющее позицию элемента по оси X.</li>
+                        <li><code>y</code> - <b><code>float</code></b> - значение, определяющее позицию элемента по оси Y.</li>
+                        <li><code>time</code> - <b><code>float</code></b>, необязательный - кол-во секунд, затрачиваемое на изменение.<br>По умолчанию равно <code>0</code>.</li>
+                        <li><code>interpolation</code> - <b>свой тип</b>, необязательный - тип используемой интерполяции, определяющей плавность ускорения и остановки.<br>По умолчанию равно <code>LINEAR</code>.</li>
+                    </ul>
+                </td>
+                <td>
+                    <code>Move("./TanksFound", 204.5, 104.0, 0.5, EASE_IN)</code>
+                    <br><br>
+                    Если не указывать <code>x</code>, то обязательно написать <code>y</code>:
+                    <br>
+                    <code>Move("./TanksFound", y=104.0, 0.5, EASE_IN)</code>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <code>MoveRel(path, x, y, [time], [interpolation])</code>
+                </td>
+                <td>
+                    Меняет позицию объекта относительно текущей позиции.<br>
+                    Переменные:
+                    <ul>
+                        <li><code>path</code> - <b><code>string</code></b> - строка, определяющая путь до объекта.</li>
+                        <li><code>x</code> - <b><code>float</code></b>, необязательный - значение, определяющее отступ от текущей позиции элемента по оси X.</li>
+                        <li><code>y</code> - <b><code>float</code></b> - значение, определяющее отступ от текущей позиции элемента по оси Y.</li>
+                        <li><code>time</code> - <b><code>float</code></b>, необязательный - кол-во секунд, затрачиваемое на изменение.<br>По умолчанию равно <code>0</code>.</li>
+                        <li><code>interpolation</code> - <b>свой тип</b>, необязательный - тип используемой интерполяции, определяющей плавность ускорения и остановки.<br>По умолчанию равно <code>LINEAR</code>.</li>
+                    </ul>
+                </td>
+                <td>
+                    <code>MoveRel("./TanksFound", 10, 1, 0.5, EASE_IN)</code>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <code>MoveToControl(path, path2?, [time], [interpolation])</code>
+                </td>
+                <td>
+                    Меняет позицию объекта относительно текущей позиции.<br>
+                    Переменные:
+                    <ul>
+                        <li><code>path</code> - <b><code>string</code></b> - строка, определяющая путь до объекта, который нужно передвинуть.</li>
+                        <li><code>path2</code> <i>(н.и.н.)</i> - <b><code>string</code></b> - строка, определяющая путь до объекта, который нужно передвинуть.</li>
+                        <li><code>time</code> - <b><code>float</code></b>, необязательный - кол-во секунд, затрачиваемое на изменение.<br>По умолчанию равно <code>0</code>.</li>
+                        <li><code>interpolation</code> - <b>свой тип</b>, необязательный - тип используемой интерполяции, определяющей плавность ускорения и остановки.<br>По умолчанию равно <code>LINEAR</code>.</li>
+                    </ul>
+                </td>
+                <td>
+                    <code>MoveToControl("./TanksFound", 10, 1, 0.5, EASE_IN)</code>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <code>Scroll(<code>path</code>, value?, [time], [interpolation])</code>
+                </td>
+                <td>
+                    Скроллит указанный <code>UIScrollView</code> на <code>value</code> пикселей.<br>
+                    Переменные:
+                    <ul>
+                        <li><code>path</code> - <b><code>string</code></b> - строка, определяющая путь до объекта.</li>
+                        <li><code>value</code> <i>(н.и.н.)</i> - <b><code>float</code></b> - значение, определяющее количество пикселей для скролла.</li>
+                        <li><code>time</code> - <b><code>float</code></b>, необязательный - кол-во секунд, затрачиваемое на изменение.<br>По умолчанию равно <code>0</code>.</li>
+                        <li><code>interpolation</code> - <b>свой тип</b>, необязательный - тип используемой интерполяции, определяющей плавность ускорения и остановки.<br>По умолчанию равно <code>LINEAR</code>.</li>
+                    </ul>
+                </td>
+                <td>
+                    <code>Scroll("**/Carousel/TanksList/ScrollableArea", 100, 0.5, EASE_IN)</code>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <code>ScrollToEnsureControlOnScreen(path, [time], [interpolation], [scrollToControlPolicy?])</code>
+                </td>
+                <td>
+                    Скроллит материнский <code>UIScrollViewContainer</code> до того момента, пока указанный элемент не окажется зарендеренным.<br>
+                    Работает только в случае, если его хотя бы один из материнских элементов является <code>UIScrollViewContainer</code>.
+                    Переменные:
+                    <ul>
+                        <li><code>path</code> - <b><code>string</code></b> - строка, определяющая путь до объекта.</li>
+                        <li><code>time</code> - <b><code>float</code></b>, необязательный - кол-во секунд, затрачиваемое на изменение.<br>По умолчанию равно <code>0</code>.</li>
+                        <li><code>interpolation</code> - <b>свой тип</b>, необязательный - тип используемой интерполяции, определяющей плавность ускорения и остановки.<br>По умолчанию равно <code>LINEAR</code>.</li>
+                        <li><code>scrollToControlPolicy</code> <i>(н.и.н.)</i> - <b><code>eScrollToControlPolicy</code></b>, необязательный - тип используемой политики, определяющей момент остановки скролла.</li>
+                    </ul>
+                </td>
+                <td>
+                    <code>ScrollToEnsureControlOnScreen("./PlayerTanks/TankCell:ussr:KV-1", 0.5, EASE_IN, eScrollToControlPolicy.kCenter)</code>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <code>PlayFrameAnimation(path, ?, ??)</code>
+                </td>
+                <td>
+                    Запускает анимацию изображения объекта.<br>
+                    Переменные:
+                    <ul>
+                        <li><code>path</code> - <b><code>string</code></b> - строка, определяющая путь до объекта.</li>
+                        <li>? - <b><code>int?</code></b> - неизвестно, возможно слой спрайта. Обычно используется <i>-1</i>.</li>
+                        <li>?? - <b><code>int?</code></b> - неизвестно, по умолчанию <i>12</i>.</li>
+                    </ul>
+                </td>
+                <td>
+                    <code>PlayFrameAnimation("**/LightAnim", 1, 12)</code>
+                </td>
+            </tr>
+        </table>    
+    </div>
+</body>

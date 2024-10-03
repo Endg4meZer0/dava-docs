@@ -1,0 +1,760 @@
+<head>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../styles/style.css">
+    <title>DAVA Stuff</title>
+    <meta content="Коллекция различных понятых мною фигнюшек движка DAVA" property="og:title" />
+    <meta content="На этой странице собраны основные статические функции движка" property="og:description" />
+    <meta content="https://endg4mezer0.github.io/mainSections/genericFunctions.html" property="og:url" />
+    <meta content="https://media.discordapp.net/attachments/1183792291035480196/1204692736804913183/ezgif-4-93565fb7fc.gif" property="og:image" />
+    <meta content="#45f7a7" data-react-helmet="true" name="theme-color" />
+</head>
+<body>
+    <a href="./genericFunctions.html#pageStart">
+        <button style="position: fixed; padding: 4px 8px; top: 8px; right: 16px;">Вверх</button>
+    </a>
+    <h1 id="pageStart">Основные функции, использующиеся повсеместно по коду игры</h1>
+    <a href="../index.html">Вернуться назад</a>
+    <h2>Глоссарик</h2>
+    <b><code>number</code></b> - любой из числовых типов, среди которых есть <b><code>int</code></b>, <b><code>float</code></b> и <b><code>long</code></b> (<b><code>int64</code></b>)
+    <h2>Содержание</h2>
+    <a href="./genericFunctions.html#numberFuncs">Числовые функции</a><br>
+    <a href="./genericFunctions.html#textFuncs">Текстовые функции</a><br>
+    <a href="./genericFunctions.html#colorFuncs">Функции, связанные с цветом</a><br>
+    <a href="./genericFunctions.html#collectionsFuncs">Функции, связанные с массивами/словарями</a><br>
+    <a href="./genericFunctions.html#timeFuncs">Временные функции</a><br>
+    <a href="./genericFunctions.html#ifFuncs">Функции для проверок</a><br>
+    <a href="./genericFunctions.html#unknownFuncs">Малоизвестные и редковстречающиеся функции</a><br>
+    <h2>Статические функции</h2>
+    <div id="numberFuncs">
+        <h3>Числовые функции</h3>
+        <table cellpadding="8px" border="2px" align="justify">
+            <tr>
+                <td><b>Название</b></td>
+                <td><b>Возвращает</b></td>
+                <td><b>Пояснение</b></td>
+                <td><b>Пример</b></td>
+            </tr>
+            <tr id="abs">
+                <td>
+                    <code>abs(number)</code><br>
+                </td>
+                <td>
+                    <b><code>number</code></b>
+                </td>
+                <td>
+                    Берёт модуль от числа.<br>
+                    Переменные:
+                    <ul>
+                        <li><code>number</code> - <b><code>number</code></b> - любое число.</li>
+                    </ul>
+                </td>
+                <td>
+                    <code>abs(-12) -> 12</code>
+                </td>
+            </tr>
+            <tr id="max">
+                <td>
+                    <code>max(number1, number2)</code><br>
+                </td>
+                <td>
+                    <b><code>number</code></b>
+                </td>
+                <td>
+                    Возращает максимальное из двух чисел.<br>
+                    Переменные:
+                    <ul>
+                        <li><code>number1</code> - <b><code>number</code></b> - любое число.</li>
+                        <li><code>number2</code> - <b><code>number</code></b> - любое число.</li>
+                    </ul>
+                </td>
+                <td>
+                    <code>max(-12, 12) -> 12</code>
+                </td>
+            </tr>
+            <tr id="min">
+                <td>
+                    <code>min(number1, number2)</code><br>
+                </td>
+                <td>
+                    <b><code>number</code></b>
+                </td>
+                <td>
+                    Возращает минимальное из двух чисел.<br>
+                    Переменные:
+                    <ul>
+                        <li><code>number1</code> - <b><code>number</code></b> - любое число.</li>
+                        <li><code>number2</code> - <b><code>number</code></b> - любое число.</li>
+                    </ul>
+                </td>
+                <td>
+                    <code>min(-12, 12) -> -12</code>
+                </td>
+            </tr>
+            <tr id="clamp">
+                <td>
+                    <code>clamp(number1, number2, number3)</code><br>
+                </td>
+                <td>
+                    <b><code>number</code></b>
+                </td>
+                <td>
+                    Возращает среднее (т.е. ни максимальное, ни минимальное) из трёх чисел.<br>
+                    Переменные:
+                    <ul>
+                        <li><code>number1</code> - <b><code>number</code></b> - любое число.</li>
+                        <li><code>number2</code> - <b><code>number</code></b> - любое число.</li>
+                        <li><code>number3</code> - <b><code>number</code></b> - любое число.</li>
+                    </ul>
+                </td>
+                <td>
+                    <code>clamp(-12, 0, 12) -> 0</code>
+                </td>
+            </tr>
+            <tr id="round">
+                <td>
+                    <code>round(number)</code><br>
+                </td>
+                <td>
+                    <b><code>number</code></b>
+                </td>
+                <td>
+                    Возращает округлённое до ближайшего число того же типа, что и входное (т.е. если на вход подан <b><code>float</code></b>, то и на выходе будет округлённый, но всё еще <b><code>float</code></b>).<br>
+                    Переменные:
+                    <ul>
+                        <li><code>number</code> - <b><code>number</code></b> - любое число.</li>
+                    </ul>
+                </td>
+                <td>
+                    <code>round(125.112200) -> 125.0</code>
+                </td>
+            </tr>
+            <tr id="floor">
+                <td>
+                    <code>floor(number)</code><br>
+                </td>
+                <td>
+                    <b><code>number</code></b>
+                </td>
+                <td>
+                    Возращает округлённое до ближайшего меньшего число того же типа, что и входное (т.е. если на вход подан <b><code>float</code></b>, то и на выходе будет округлённый, но всё еще <b><code>float</code></b>).<br>
+                    Переменные:
+                    <ul>
+                        <li><code>number</code> - <b><code>number</code></b> - любое число.</li>
+                    </ul>
+                </td>
+                <td>
+                    <code>floor(125.612200) -> 125.0</code>
+                </td>
+            </tr>
+            <tr id="ceil">
+                <td>
+                    <code>ceil(number)</code><br>
+                </td>
+                <td>
+                    <b><code>number</code></b>
+                </td>
+                <td>
+                    Возращает округлённое до ближайшего большего число того же типа, что и входное (т.е. если на вход подан <b><code>float</code></b>, то и на выходе будет округлённый, но всё еще <b><code>float</code></b>).<br>
+                    Переменные:
+                    <ul>
+                        <li><code>number</code> - <b><code>number</code></b> - любое число.</li>
+                    </ul>
+                </td>
+                <td>
+                    <code>ceil(125.112200) -> 126.0</code>
+                </td>
+            </tr>
+            <tr id="rand">
+                <td>
+                    <code>rand(number)</code><br>
+                </td>
+                <td>
+                    <b><code>int</code></b>
+                </td>
+                <td>
+                    Возвращает случайное число от <code>0</code> до <code>number-1</code>.<br>
+                    Переменные:
+                    <ul>
+                        <li><code>number</code> - <b><code>int</code></b> - любое целое число.</li>
+                    </ul>
+                </td>
+                <td>
+                    <code>rand(tanks.Size)</code>
+                </td>
+            </tr>
+            <tr id="power">
+                <td>
+                    <code>power(number, power)</code><br>
+                </td>
+                <td>
+                    <b><code>int</code></b>
+                </td>
+                <td>
+                    Возвращает число <code>number</code> в степени <code>power</code>.<br>
+                    Переменные:
+                    <ul>
+                        <li><code>number</code> - <b><code>int</code></b> - любое целое число.</li>
+                        <li><code>power</code> - <b><code>int</code></b> - любое целое число.</li>
+                    </ul>
+                    <i>К сожалению, не работает с дробными числами, а то можно было бы сделать какой-нибудь внутриигровой счётчик WN7 в профиле...</i>
+                </td>
+                <td>
+                    <code>power(10, 2) -> 100</code>
+                </td>
+            </tr>
+            <tr id="int">
+                <td>
+                    <code>int(value)</code>
+                </td>
+                <td>
+                    <b><code>int</code></b>
+                </td>
+                <td>
+                    Возращает целое число, получаемое из переменной какого-либо типа.<br>
+                    Переменные:
+                    <ul>
+                        <li><code>value</code> - <b><code>any</code></b> - любое значение.<br>Если является строкой, то при неправильном формате (например, <code>"5 км/ч"</code> вместо просто <code>"5"</code>) откатывается к <code>0</code></li>
+                    </ul>
+                </td>
+                <td>
+                    <code>int(true) -> 1</code><br>
+                    <code>int("2") -> 2</code><br>
+                    <code>int(3.14) -> 3</code>
+                </td>
+            </tr>
+            <tr id="strToInt">
+                <td>
+                    <code>strToInt(value)</code>
+                </td>
+                <td>
+                    <b><code>int</code></b>
+                </td>
+                <td>
+                    Возращает целое число, получаемое из строки.<br>
+                    Просто разновидность функции выше конкретно для строк, использовать можно как <code>strToInt("1")</code>, так и <code>int("1")</code> - результат один.<br>
+                    Зачем вводили? Самому интересно ¯\_(ツ)_/¯<br>
+                    Переменные:
+                    <ul>
+                        <li><code>value</code> - <b><code>any</code></b> - любое значение.<br>Если является строкой, то при неправильном формате (например, <code>"5 км/ч"</code> вместо просто <code>"5"</code>) откатывается к <code>0</code></li>
+                    </ul>
+                </td>
+                <td>
+                    <code>strToInt("2") -> 2</code>
+                </td>
+            </tr>
+            <tr id="float">
+                <td>
+                    <code>float(value)</code>
+                </td>
+                <td>
+                    <b><code>float</code></b>
+                </td>
+                <td>
+                    Возращает вещественное число, получаемое из переменной какого-либо типа.<br>
+                    Переменные:
+                    <ul>
+                        <li><code>value</code> - <b><code>any</code></b> - любое значение.<br>Если является строкой, то при неправильном формате (например, <code>"5.12 км/ч"</code> вместо просто <code>"5.12"</code>) откатывается к <code>0.0</code></li>
+                    </ul>
+                </td>
+                <td>
+                    <code>float(true) -> 1.0</code><br>
+                    <code>float("2.234") -> 2.234</code><br>
+                    <code>float(3) -> 3.0</code>
+                </td>
+            </tr>
+            <tr id="toEnum">
+                <td>
+                    <code>toEnum(number, enumType)</code>
+                </td>
+                <td>
+                    <b><code>enumType</code></b>
+                </td>
+                <td>
+                    Возращает <code>enum</code> того же типа, что и <code>enumType</code>, на основе номера <code>number</code>.<br>
+                    Переменные:
+                    <ul>
+                        <li><code>number</code> - <b><code>int</code></b> - номер, присутствующий в <code>enumType</code></li>
+                        <li><code>enumType</code> - <b><code>enum</code></b> - тип <code>enum</code>, в который нужно превратить номер.</li>
+                    </ul>
+                </td>
+                <td>
+                    <code>toEnum(4, eLeague) -> eLeague.DIAMOND</code><br>
+                    <code>toEnum(-1, eLeague) -> eLeague.NO_LEAGUE</code>
+                </td>
+            </tr>
+        </table>    
+    </div>
+    <div id="textFuncs">
+        <h3>Текстовые функции</h3>
+        <table cellpadding="8px" border="2px" align="justify">
+            <tr>
+                <td><b>Название</b></td>
+                <td><b>Возвращает</b></td>
+                <td><b>Пояснение</b></td>
+                <td><b>Пример</b></td>
+            </tr>
+            <tr id="str">
+                <td>
+                    <code>str(number)</code><br>
+                    <code>str(enum)</code><br>
+                    <code>str(number, eType)</code><br>
+                    <code>str(number, eType, key)</code><br>
+                </td>
+                <td>
+                    <b><code>string</code></b>
+                </td>
+                <td>
+                    Превращает определённые данные в строку.<br>
+                    Переменные:
+                    <ul>
+                        <li><code>number</code> - <b><code>number</code></b> - любое число.</li>
+                        <li><code>enum</code> - <b><code>enum</code></b> - значение, получаемое обращением к eType через точку, например, <code>eGameMode.Rating</code></li>
+                        <li><code>eType</code> - <b><code>enumType</code></b> - тот enum, из которого берётся значение по номеру <code>number</code>, например, <code>eGameMode</code></li>
+                        <li><code>key</code> - <b><code>string</code></b> - если в eType хранится не просто значение, а несколько значений через словарь, то используется для получения конкретного по его ключу. Например, для получения name из <code>eAim[0].name</code>, нужно писать <code>str(0, eAim, \"name\")</code></li>
+                    </ul>
+                </td>
+                <td>
+                    <code>str(12)</code><br>
+                    <code>str(eGameMode.Rating)</code><br>
+                    <code>str(1, eGameMode)</code><br>
+                    <code>str(0, eAim, \"name\")</code>
+                </td>
+            </tr>
+            <tr id="str1kSep">
+                <td>
+                    <code>str1000Separated(int)</code><br>
+                </td>
+                <td>
+                    <b><code>string</code></b>
+                </td>
+                <td>
+                    Превращает целое число в строку, где тысячи отделены пробелами.<br>
+                    Переменные:
+                    <ul>
+                        <li><code>int</code> - <b><code>int</code></b> - любое целое число.</li>
+                    </ul>
+                </td>
+                <td>
+                    <code>str1000Separated(1234) -> "1 234"</code><br>
+                    <code>str1000Separated(12345678) -> "12 345 678"</code>
+                </td>
+            </tr>
+            <tr id="shortStr">
+                <td>
+                    <code>shortStr(int)</code><br>
+                </td>
+                <td>
+                    <b><code>string</code></b>
+                </td>
+                <td>
+                    Превращает целое число в строку, где большие разряды сокращены с помощью использования "k", "m" и т.п..<br>
+                    <i>Заметка:</i> числа меньше 10000 не используют сокращения и делятся по разрядам, как при использовании <code>str1000Separated</code>.<br>
+                    Переменные:
+                    <ul>
+                        <li><code>int</code> - <b><code>int</code></b> - любое целое число.</li>
+                    </ul>
+                </td>
+                <td>
+                    <code>shortStr(12345) -> "12.3k"</code><br>
+                    <code>shortStr(12345678) -> "12.3m"</code>
+                </td>
+            </tr>
+            <tr id="capitalize">
+                <td>
+                    <code>capitalize(str)</code><br>
+                </td>
+                <td>
+                    <b><code>string</code></b>
+                </td>
+                <td>
+                    Переводит всю строку в КАПС.<br>
+                    Переменные:
+                    <ul>
+                        <li><code>str</code> - <b><code>string</code></b> - любая строка.</li>
+                    </ul>
+                </td>
+                <td>
+                    <code>capitalize("aboba") -> "ABOBA"</code><br>
+                    <code>capitalize("поБеда") -> "ПОБЕДА"</code>
+                </td>
+            </tr>
+            <tr id="localize">
+                <td>
+                    <code>localize(string, [parameters])</code><br>
+                </td>
+                <td>
+                    <b><code>string</code></b>
+                </td>
+                <td>
+                    Локализирует строку через поиск соответствующего ей значения в <code>Strings\[локализация].yaml</code>.<br>
+                    Если в значении присутствуют некие параметры, указанные через <code>%(переменная)</code>, то соответственно использовать <code>parameters</code> для их определения.<br>
+                    Переменные:
+                    <ul>
+                        <li><code>string</code> - <b><code>string</code></b> - строка, соответствующая ключу из <code>Strings\[локализация].yaml</code>.</li>
+                        <li><code>parameters</code> - <b><code>map&lt;string, string&gt;</code></b> - параметры в виде <code>{ "переменная" = "значение"; }</code>.<br>Значение может быть задано с использованием того же <code>str</code> и других превращающих данные в строку функций.</li>
+                    </ul>
+                </td>
+                <td>
+                    <code>localize(key)</code><br>
+                    <code>localize(key, { "title" = "Название"; })</code><br>
+                    <code>localize(key, { "index" = str(currentIndex); })</code>
+                </td>
+            </tr>
+            <tr id="format">
+                <td>
+                    <code>format(string, parameters)</code><br>
+                </td>
+                <td>
+                    <b><code>string</code></b>
+                </td>
+                <td>
+                    Создаёт строку, использующую в своей записи некоторые параметры извне.<br>
+                    В строке они должны быть указаны как <code>%(название_переменной)</code>, и название их должно соответствовать названиям ключей в <code>parameters</code>.<br>
+                    Переменные:
+                    <ul>
+                        <li><code>string</code> - <b><code>string</code></b> - строка с переменными.</li>
+                        <li><code>parameters</code> - <b><code>map&lt;string, string&gt;</code></b> - параметры в виде <code>{ \"переменная\" = \"значение\"; }</code>.<br>Значение может быть задано с использованием того же <code>str</code> и других превращающих данные в строку функций.</li>
+                    </ul>
+                </td>
+                <td>
+                    <code>format("%(author) - %(song)", { "author" = "Неизвестен"; "song" = "Без названия"; })</code>
+                </td>
+            </tr>
+        </table>    
+    </div>
+    <div id="colorFuncs">
+        <h3>Функции, связанные с цветом</h3>
+        <table cellpadding="8px" border="2px">
+            <tr>
+                <td><b>Название</b></td>
+                <td><b>Возвращает</b></td>
+                <td><b>Пояснение</b></td>
+                <td><b>Пример</b></td>
+            </tr>
+            <tr id="rgb">
+                <td>
+                    <code>rgb(value)</code><br>
+                    <code>rgb(red, blue, green)</code>
+                </td>
+                <td>
+                    <b><code>color</code></b>
+                </td>
+                <td>
+                    Возращает цвет, получаемый из разных видов его задания в модели RGB (красный-зелёный-синий).<br>
+                    Переменные:
+                    <ul>
+                        <li><code>value</code> - <b><code>int</code> или <code>hex</code></b> - значение цвета в десятичном или шестнадцатеричном виде соответственно.<br>Переменная типа <code>hex</code> задаётся с помощью <code>#</code> (<code>rgb(#ff0000)</code>).</li>
+                        <li><code>red, blue, green</code> - <b><code>int</code></b> - значение красного, зелёного и синего оттенков соответственно от <code>0</code> до <code>255</code>.</li>
+                    </ul>
+                </td>
+                <td>
+                    <code>rgb(16777215)</code><br>
+                    <code>rgb(#ffffff)</code><br>
+                    <code>rgb(255, 255, 255)</code>
+                </td>
+            </tr>
+            <tr id="rgba">
+                <td>
+                    <code>rgba(value, alpha)</code><br>
+                    <code>rgba(red, blue, green, alpha)</code>
+                </td>
+                <td>
+                    <b><code>color</code></b>
+                </td>
+                <td>
+                    Возращает цвет, получаемый из разных видов его задания в модели RGBA (красный-зелёный-синий-прозрачность).<br>
+                    Переменные:
+                    <ul>
+                        <li><code>value</code> - <b><code>int</code> или <code>hex</code></b> - значение цвета в десятичном или шестнадцатеричном виде соответственно.<br>Переменная типа <code>hex</code> задаётся с помощью <code>#</code> без части с прозрачностью (<code>rgb(#ff0000)</code>).</li>
+                        <li><code>red, blue, green</code> - <b><code>int</code></b> - значение красного, зелёного и синего оттенков соответственно от <code>0</code> до <code>255</code>.</li>
+                        <li><code>alpha</code> - <b><code>float</code></b> - значение прозрачности в процентном соотношении от <code>0</code> до <code>1</code>.</li>
+                    </ul>
+                </td>
+                <td>
+                    <code>rgba(16777215, 0.7)</code><br>
+                    <code>rgb(#ffffff, 0.7)</code><br>
+                    <code>rgb(255, 255, 255, 0.7)</code>
+                </td>
+            </tr>
+            <tr id="hsb">
+                <td>
+                    <code>hsb(hue, saturation, brightness)</code>
+                </td>
+                <td>
+                    <b><code>color</code></b>
+                </td>
+                <td>
+                    Возращает цвет, получаемый из разных видов его задания в модели HSB (оттенок-насыщенность-яркость).<br>
+                    Переменные:
+                    <ul>
+                        <li><code>hue</code> - <b><code>int</code></b> - значение оттенка на цветовом "круге" от <code>0</code> до <code>360</code>.</li>
+                        <li><code>saturation, brightness</code> - <b><code>int</code></b> - значение насыщенности и яркости соответственно в процентном соотношении от <code>0</code> до <code>100</code>.</li>
+                    </ul>
+                </td>
+                <td>
+                    <code>hsb(285, 85, 100)</code>
+                </td>
+            </tr>
+            <tr id="hsba">
+                <td>
+                    <code>hsba(hue, saturation, brightness, alpha)</code>
+                </td>
+                <td>
+                    <b><code>color</code></b>
+                </td>
+                <td>
+                    Возращает цвет, получаемый из разных видов его задания в модели HSBA (оттенок-насыщенность-яркость-прозрачность).<br>
+                    Переменные:
+                    <ul>
+                        <li><code>hue</code> - <b><code>int</code></b> - значение оттенка на цветовом "круге" от <code>0</code> до <code>360</code>.</li>
+                        <li><code>saturation, brightness</code> - <b><code>int</code></b> - значение насыщенности и яркости соответственно в процентном соотношении от <code>0</code> до <code>100</code>.</li>
+                        <li><code>alpha</code> - <b><code>float</code></b> - значение прозрачности в процентном соотношении от <code>0</code> до <code>1</code>.</li>
+                    </ul>
+                </td>
+                <td>
+                    <code>hsba(285, 85, 100, 0.75)</code>
+                </td>
+            </tr>
+        </table>    
+    </div>
+    <div id="collectionsFuncs">
+        <h3>Функции, связанные с массивами/словарями</h3>
+        <table cellpadding="8px" border="2px">
+            <tr>
+                <td><b>Название</b></td>
+                <td><b>Возвращает</b></td>
+                <td><b>Пояснение</b></td>
+                <td><b>Пример</b></td>
+            </tr>
+            <tr id="containsStatic">
+                <td>
+                    <code>contains(obj, var)</code><br>
+                </td>
+                <td>
+                    <b><code>bool</code></b>
+                </td>
+                <td>
+                    Проверка, содержит ли массив/словарь <code>obj</code> соответственно элемент/ключ <code>var</code>.<br>
+                    <div class="descr">
+                        Гораздо чаще используется функция-собрат из категории зависимых функций (<a>вот этот</a>).<br>
+                    </div>
+                    Переменные:
+                    <ul>
+                        <li><code>var</code> - <b><code>vector&lt;any&gt;</code></b> или <b><code>map&lt;any, any&gt;</code></b> - любые массивы/словари.</li>
+                    </ul>
+                </td>
+                <td>
+                    <code>contains(session.stats.accountAuthMethods, eAccountAuthMethods.kExternalEmail)</code>
+                </td>
+            </tr>
+            <tr id="generateVector">
+                <td>
+                    <code>generateVector(count)</code><br>
+                </td>
+                <td>
+                    <b><code>vector&lt;bool&gt;</code></b>
+                </td>
+                <td>
+                    Создаёт массив с количеством элементов <code>count</code>, заполненный <code>false</code>.<br>
+                    Переменные:
+                    <ul>
+                        <li><code>var</code> - <b><code>vector&lt;any&gt;</code></b> или <b><code>map&lt;any, any&gt;</code></b> - любые массивы/словари.</li>
+                    </ul>
+                </td>
+                <td>
+                    <code>contains(session.stats.accountAuthMethods, eAccountAuthMethods.kExternalEmail)</code>
+                </td>
+            </tr>
+            <tr id="indexOf">
+                <td>
+                    <code>indexOf(obj, key, value)</code><br>
+                </td>
+                <td>
+                    <b><code>int</code></b>
+                </td>
+                <td>
+                    Возвращает индекс элемента <code>key</code> со значением <code>value</code> словаря <code>obj</code>, если он существует, иначе <code>-1</code>.<br>
+                    Переменные:
+                    <ul>
+                        <li><code>obj</code> - <b><code>map&lt;any, any&gt;</code></b> - любой словарь.</li>
+                        <li><code>key</code> - <b><code>string</code></b> - любая строка.</li>
+                        <li><code>value</code> - <b><code>any</code></b> - значение элемента <code>key</code>.</li>
+                    </ul>
+                </td>
+                <td>
+                    <code>indexOf(teamData.my.dataSort, \"isAccount\", true)</code>
+                </td>
+            </tr>
+            <tr id="upperBound">
+                <td>
+                    <code>upperBound(vector, number)</code><br>
+                </td>
+                <td>
+                    <b><code>int</code></b>
+                </td>
+                <td>
+                    Возвращает количество чисел в массиве <code>vector</code>, которые меньше или равны числу <code>number</code>. Если все числа массива подходят по условию, возвращает <code>-1</code>.<br><br>
+                    <div class="descr">
+                        Вообще функция довольно интересная. Под <code>vector</code> зачастую подразумеваются этапы квеста/БЗ, а под <code>number</code> - текущий прогресс по ним.<br>
+                        Таким образом она возвращает число: сколько этапов можно завершить за текущий прогресс (т.е. если этапы - <code>[ 125; 200; 300; ]</code>, допустим, урона, а текущий прогресс - <code>240</code>, то функция вернёт <code>2</code>, потому что за 240 урона можно закрыть 2 этапа квеста/БЗ соответственно. По этой же причине она создана таким образом, чтобы при полном выполнении квеста/БЗ возвращать <code>-1</code>.)<br><br>    
+                    </div>
+                    Переменные:
+                    <ul>
+                        <li><code>vector</code> - <b><code>vector&lt;int&gt;</code></b> - массив целых чисел. Не обязательно отсортированный.</li>
+                        <li><code>number</code> - <b><code>int</code></b> - любое целое число.</li>
+                    </ul>
+                </td>
+                <td>
+                    <code>upperBound([ 100; 200; 300; ], 100) -> 1</code><br>
+                    <code>upperBound([  ], 125) -> -1</code>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div id="timeFuncs">
+        <h3>Временны́е функции</h3>
+        <table cellpadding="8px" border="2px">
+            <tr>
+                <td><b>Название</b></td>
+                <td><b>Возвращает</b></td>
+                <td><b>Пояснение</b></td>
+                <td><b>Пример</b></td>
+            </tr>
+            <tr id="timeDiff">
+                <td>
+                    <code>timeDiff(time1, time2)</code><br>
+                </td>
+                <td>
+                    <b><code>string</code></b>
+                </td>
+                <td>
+                    Вычисляет разницу между <code>time1</code> и <code>time2</code> и возвращает отформатированную строку, обозначающую время, равное <code>time1 - time2</code>.<br>
+                    Переменные:
+                    <ul>
+                        <li><code>time1</code> - <b><code>int</code></b> или <b><code>int64</code></b> - неотрицательное число, выражающее время в секундах (обычно по стандарту UNIX).</li>
+                        <li><code>time2</code> - <b><code>int</code></b> или <b><code>int64</code></b> - неотрицательное число, выражающее время в секундах (обычно по стандарту UNIX).</li>
+                    </ul>
+                </td>
+                <td>
+                    <code>timeDiff(1710063883, 1709963883) -> "1д 3ч"</code>
+                </td>
+            </tr>
+            <tr id="timeDiffShort">
+                <td>
+                    <code>timeDiffShort(time)</code><br>
+                </td>
+                <td>
+                    <b><code>string</code></b>
+                </td>
+                <td>
+                    Переводит время из <code>time</code> секунд в полную форму и возвращает отформатированную строку, состоящую только из одного разряда времени.<br>
+                    Переменные:
+                    <ul>
+                        <li><code>time</code> - <b><code>int</code></b> или <b><code>int64</code></b> - неотрицательное число, выражающее время в секундах (обычно просто длительность).</li>
+                    </ul>
+                </td>
+                <td>
+                    <code>timeDiffShort(86400) -> "1д"</code><br>
+                    <code>timeDiffShort(120000) -> "1д"</code><br>
+                    <code>timeDiffShort(172800) -> "2д"</code>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div id="ifFuncs">
+        <h3>Функции для проверок</h3>
+        <table cellpadding="8px" border="2px">
+            <tr>
+                <td><b>Название</b></td>
+                <td><b>Возвращает</b></td>
+                <td><b>Пояснение</b></td>
+                <td><b>Пример</b></td>
+            </tr>
+            <tr id="isNullStatic">
+                <td>
+                    <code>isNull(var)</code><br>
+                </td>
+                <td>
+                    <b><code>bool</code></b>
+                </td>
+                <td>
+                    Проверка, не является ли переменная <code>null</code>'ом<br>
+                    Переменные:
+                    <ul>
+                        <li><code>var</code> - <b><code>any</code></b> - любая переменная.</li>
+                    </ul>
+                </td>
+                <td>
+                    <code>isNull(offer.basicOffer)</code>
+                </td>
+            </tr>
+            <tr id="emptyStatic">
+                <td>
+                    <code>empty(var)</code><br>
+                </td>
+                <td>
+                    <b><code>bool</code></b>
+                </td>
+                <td>
+                    Проверка, не является ли пустой строка<br>
+                    Переменные:
+                    <ul>
+                        <li><code>var</code> - <b><code>string</code></b> - любая строка.</li>
+                    </ul>
+                </td>
+                <td>
+                    <code>empty(session.email)</code>
+                </td>
+            </tr>
+            <tr id="floatEqual">
+                <td>
+                    <code>floatEqual(float1, float2)</code>
+                </td>
+                <td>
+                    <b><code>bool</code></b>
+                </td>
+                <td>
+                    Проверяет, равен ли <code>float1 float2</code>.<br>
+                    Переменные:
+                    <ul>
+                        <li><code>float1</code> - <b><code>float</code></b> - любое значение.</li>
+                        <li><code>float2</code> - <b><code>float</code></b> - любое значение.</li>
+                    </ul>
+                </td>
+                <td>
+                    <code>floatEqual(resource.discount.value, 0.000000)</code>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div id="unknownFuncs">
+        <h3>Малоизвестные и редковстречающиеся функции</h3>
+        <table cellpadding="8px" border="2px">
+            <tr>
+                <td><b>Название</b></td>
+                <td><b>Возвращает</b></td>
+                <td><b>Пояснение</b></td>
+                <td><b>Пример</b></td>
+            </tr>
+            <tr id="pair">
+                <td>
+                    <code>pair(int, ???)</code><br>
+                </td>
+                <td>
+                    <b><code>???</code></b>
+                </td>
+                <td>
+                    Неизвестная на данный момент функция. Используется в коде всего шесть раз в одном и том же месте старого интерфейса при вызове ивента. Будет время - проверю как положено, что она из себя представляет.<br>
+                    Переменные:
+                    <ul>
+                        <li><code>int</code> - <b><code>int</code></b> - ???.</li>
+                        <li><code>???</code> - <b><code>??? (возможно bool)</code></b> - ???.</li>
+                    </ul>
+                </td>
+                <td>
+                    <code>pair(6, _isTurnedOn)</code>
+                </td>
+            </tr>
+        </table>
+    </div>
+</body>

@@ -1,0 +1,29 @@
+body {
+    background: #161616;
+    color: #fff;
+    font-family: 'Roboto';
+}
+
+a, a:visited {
+    font-family: 'Roboto';
+    color: #fff;
+}
+
+code {
+    font-size: 14px;
+}
+
+h1,h2,h3 {
+    font-family: 'Roboto';
+    color: #fff;
+    text-align: center;
+}
+
+table {
+    width: 100%;
+}
+
+.descr {
+    font-size: 10pt;
+    color: lightgray;
+}
